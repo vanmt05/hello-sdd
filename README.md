@@ -1,67 +1,67 @@
-# Hello SDD: Curso de Spec-Driven Development (SDD) desde cero
+# Hello SDD: Spec-Driven Development (SDD) course from scratch
 
-[![Curso de Spec-Driven Development](https://img.youtube.com/vi/5HaOxAAA5qI/maxresdefault.jpg)](https://youtube.com/live/5HaOxAAA5qI)
+[![Spec-Driven Development course](https://img.youtube.com/vi/5HaOxAAA5qI/maxresdefault.jpg)](https://youtube.com/live/5HaOxAAA5qI)
 
-## Curso de [MoureDev](https://moure.dev) sobre **Spec-Driven Development (SDD)**: desarrollar software con agentes de IA partiendo de una especificación acordada, en lugar de improvisar prompts. 
+## [MoureDev](https://moure.dev) course on **Spec-Driven Development (SDD)**: building software with AI agents starting from an agreed specification, instead of improvising prompts.
 
-> **Es indispensable [ver el curso](https://youtube.com/live/5HaOxAAA5qI) para entender el contenido del repositorio.**
+> **Watching [the course](https://youtube.com/live/5HaOxAAA5qI) is essential to understand the content of this repository.**
 
-Contiene dos cosas: las **plantillas** usadas en el curso (`samples/`) y un **proyecto completo** construido paso a paso con SDD (`habits-cli/`).
+It contains two things: the **templates** used in the course (`samples/`) and a **complete project** built step by step with SDD (`habits-cli/`).
 
 ```
 HelloSDD/
-├── samples/            # Plantillas y material del curso
-│   ├── AGENTS.md       # Plantilla de instrucciones para el agente
-│   ├── spec.md         # Plantilla de especificación (RF en notación EARS)
-│   ├── prompts.md      # Prompt esencial de cada fase del flujo SDD
-│   └── sdd.excalidraw  # Pizarra del curso (guion por bloques y diagramas)
-└── habits-cli/         # Proyecto práctico desarrollado con SDD
+├── samples/            # Course templates and material
+│   ├── AGENTS.md       # Agent instructions template
+│   ├── spec.md         # Specification template (RF-x in EARS notation)
+│   ├── prompts.md      # Essential prompt for each phase of the SDD flow
+│   └── sdd.excalidraw  # Course whiteboard (block-by-block script and diagrams)
+└── habits-cli/         # Hands-on project developed with SDD
 ```
 
-## `samples/` — plantillas
+## `samples/` — templates
 
-| Archivo | Qué es |
+| File | What it is |
 |---|---|
-| `AGENTS.md` | Plantilla del archivo de contexto para el agente: qué es el proyecto, comandos, estilo, reglas y verificación obligatoria al terminar. `CLAUDE.md` puede limitarse a `@AGENTS.md`. |
-| `spec.md` | Plantilla de especificación: contexto, usuarios, historias, requisitos funcionales numerados (RF-x) en notación EARS, casos límite, fuera de alcance, criterios de finalización y dudas abiertas. |
-| `prompts.md` | Tabla con el prompt esencial de cada fase: constitución, spec, clarificación, plan, tareas, implementación, validación y cambio. |
-| `sdd.excalidraw` | Pizarra del curso: el guion por bloques (qué es SDD, vibe coding, tipos de SDD, EARS, flujo de trabajo, práctica…) y diagramas de cómo trabaja un agente. Se abre en [excalidraw.com](https://excalidraw.com). |
+| `AGENTS.md` | Template for the agent's context file: what the project is, commands, style, rules and mandatory verification when finishing. `CLAUDE.md` can be reduced to just `@AGENTS.md`. |
+| `spec.md` | Specification template: context, users, stories, numbered functional requirements (RF-x) in EARS notation, edge cases, out of scope, completion criteria and open questions. |
+| `prompts.md` | Table with the essential prompt for each phase: constitution, spec, clarification, plan, tasks, implementation, validation and change. |
+| `sdd.excalidraw` | Course whiteboard: the block-by-block script (what SDD is, vibe coding, types of SDD, EARS, workflow, practice…) and diagrams of how an agent works. Open it at [excalidraw.com](https://excalidraw.com). |
 
-## `habits-cli/` — el proyecto con SDD
+## `habits-cli/` — the project built with SDD
 
-Una CLI en Python (solo biblioteca estándar) para registrar hábitos de estudio y ver la racha de días consecutivos: `habits add`, `habits done` y `habits list`.
+A Python CLI (standard library only) to track study habits and see your streak of consecutive days: `habits add`, `habits done` and `habits list`.
 
-Lo importante no es la app, sino **cómo se construyó**. Cada paso del flujo SDD dejó su artefacto en el repo:
+What matters is not the app, but **how it was built**. Every step of the SDD flow left its artifact in the repo:
 
-| Paso | Artefacto |
+| Step | Artifact |
 |---|---|
-| 1. Constitución | `docs/constitution.md` — 6 principios innegociables del proyecto |
-| Contexto del agente | `AGENTS.md` + `CLAUDE.md` |
-| 2. Especificación | `specs/001-habits-mvp/spec.md` — RF-1 a RF-11 en notación EARS |
-| 3. Clarificación | Revisión de la spec como QA: detecta ambigüedades y huecos antes de planificar |
-| 4. Planificación | `specs/001-habits-mvp/plan.md` — módulos, modelo de datos, algoritmo de racha, contrato CLI y decisiones técnicas |
-| 5. Tareas | `specs/001-habits-mvp/tasks.md` — T1 a T8 con checkboxes y su "Hecho cuando:" |
-| 6. Implementación | `habits/` (core + storage + cli) y `tests/`, una tarea cada vez y tests primero |
-| 7. Validación | Recorrido RF por RF comprobando qué test cubre cada uno |
+| 1. Constitution | `docs/constitution.md` — 6 non-negotiable principles of the project |
+| Agent context | `AGENTS.md` + `CLAUDE.md` |
+| 2. Specification | `specs/001-habits-mvp/spec.md` — RF-1 to RF-11 in EARS notation |
+| 3. Clarification | Reviewing the spec as QA: spots ambiguities and gaps before planning |
+| 4. Planning | `specs/001-habits-mvp/plan.md` — modules, data model, streak algorithm, CLI contract and technical decisions |
+| 5. Tasks | `specs/001-habits-mvp/tasks.md` — T1 to T8 with checkboxes and their "Done when:" |
+| 6. Implementation | `habits/` (core + storage + cli) and `tests/`, one task at a time and tests first |
+| 7. Validation | Walkthrough requirement by requirement, checking which test covers each one |
 
-Incluye además una **skill** reutilizable, `spec-generator` (`.claude/skills/spec-generator/`), que guía la entrevista de requisitos y genera la spec siguiendo la plantilla. Está enlazada también para opencode en `.opencode/skill/`.
+It also includes a reusable **skill**, `spec-generator` (`.claude/skills/spec-generator/`), which guides the requirements interview and generates the spec following the template. It is also linked for opencode in `.opencode/skill/`.
 
-Los prompts exactos de cada paso, y cómo ejecutar la app y sus tests, están en el [README de habits-cli](./habits-cli/README.md).
+The exact prompts for each step, and how to run the app and its tests, are in the [habits-cli README](./habits-cli/README.md).
 
-## El flujo SDD en una línea
+## The SDD flow in one line
 
-Constitución → Spec → Clarificación → Plan → Tareas → Implementación (una tarea cada vez, tests primero) → Validación → Cambio (primero la spec, luego el código).
+Constitution → Spec → Clarification → Plan → Tasks → Implementation (one task at a time, tests first) → Validation → Change (spec first, then code).
 
-## ![https://mouredev.com](https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_emote.png) Hola, mi nombre es Brais Moure.
+## ![https://mouredev.com](https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_emote.png) Hi, my name is Brais Moure.
 
 [![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCxPD7bsocoAMq8Dj18kmGyQ?style=social)](https://youtube.com/mouredevapps?sub_confirmation=1)
 [![Discord](https://img.shields.io/discord/729672926432985098?style=social&label=Discord&logo=discord)](https://mouredev.com/discord)
 ![GitHub Followers](https://img.shields.io/github/followers/mouredev?style=social)
 ![GitHub Followers](https://img.shields.io/github/stars/mouredev?style=social)
 
-Soy ingeniero de software desde 2010. Desde 2018 combino mi trabajo como desarrollador con la creación de contenido formativo y divulgativo sobre programación e IA en diferentes redes sociales como **[@mouredev](https://moure.dev)**.
+I have been a software engineer since 2010. Since 2018 I have combined my work as a developer with creating educational and outreach content about programming and AI on different social networks as **[@mouredev](https://moure.dev)**.
 
-Si quieres unirte a nuestra comunidad de desarrollo y aprender programación e inteligencia artificial, puedes encontrarme en:
+If you want to join our development community and learn programming and artificial intelligence, you can find me at:
 
 [![Pro](https://img.shields.io/badge/Cursos-mouredev.pro-FF5500?style=for-the-badge&logo=gnometerminal&logoColor=white&labelColor=101010)](https://mouredev.pro)
 [![Link](https://img.shields.io/badge/Links_de_interés-moure.dev-14a1f0?style=for-the-badge&logo=Linktree&logoColor=white&labelColor=101010)](https://moure.dev)

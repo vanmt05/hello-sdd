@@ -1,33 +1,35 @@
-# spec-generator — instalación
+# spec-generator — installation
 
-La skill es una carpeta autocontenida con dos ficheros: `SKILL.md` (las
-instrucciones, con frontmatter YAML) y `plantilla-spec.md` (la plantilla).
-El contenido es agnóstico de la herramienta; solo cambia dónde se coloca.
+The skill is a self-contained folder with two files: `SKILL.md` (the
+instructions, with YAML frontmatter) and `spec-template.md` (the template).
+The content is tool-agnostic; only the location changes.
 
 ## Claude Code
 
-Ya está instalada en este proyecto. Para tenerla en todos tus proyectos:
+It is already installed in this project. To have it in all your projects:
 
 ```bash
 cp -R .claude/skills/spec-generator ~/.claude/skills/
 ```
 
-Se activa sola cuando pides una spec, o a mano con `/spec-generator`.
+It triggers on its own when you ask for a spec, or manually with
+`/spec-generator`.
 
 ## opencode
 
-Mismo formato de skill, distinta ruta. Ya está enlazada en este repo
-(`.opencode/skill/spec-generator` es un symlink a la carpeta canónica).
-En otro proyecto, o si tu sistema no maneja symlinks (Windows sin permisos):
+Same skill format, different path. It is already linked in this repo
+(`.opencode/skill/spec-generator` is a symlink to the canonical folder).
+In another project, or if your system does not handle symlinks (Windows
+without permissions):
 
 ```bash
 mkdir -p .opencode/skill && cp -R .claude/skills/spec-generator .opencode/skill/
 ```
 
-Global en vez de por proyecto: `~/.config/opencode/skill/`.
+Global instead of per project: `~/.config/opencode/skill/`.
 
-## Mantenimiento
+## Maintenance
 
-`SKILL.md` es la única fuente de verdad: opencode lo alcanza por symlink y el
-comando de Cursor lo referencia por ruta. Edita solo ese fichero. Si en algún
-sitio tienes una copia en vez de un enlace, recuerda sincronizarla.
+`SKILL.md` is the single source of truth: opencode reaches it through the
+symlink and the Cursor command references it by path. Edit only that file. If
+somewhere you have a copy instead of a link, remember to keep it in sync.

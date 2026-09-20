@@ -1,12 +1,12 @@
-## Prompts por fase
+## Prompts by phase
 
-|Fase|Prompt esencial|
+|Phase|Essential prompt|
 |---|---|
-|Constitución|"Proponme la constitución de este proyecto: N principios cortos y verificables sobre stack, calidad, tests y límites. Máx. 15 líneas. Espera mi aprobación."|
-|Spec (entrevista)|"NO escribas código. Hazme preguntas de una en una (máx. 6) sobre casos límite, errores y alcance, y después genera spec.md con RF numerados en EARS, fuera de alcance y criterios de finalización. Solo el QUÉ y el POR QUÉ."|
-|Clarificación|"Revisa la spec como un QA profesional: ambigüedades, contradicciones, casos límite ausentes, conflictos con la constitución. Solo detecta, no resuelvas."|
-|Plan|"Lee constitución y spec. Sin código: genera plan.md con módulos, modelo de datos, decisiones justificadas (con la alternativa descartada) y estrategia de tests. Indica qué RF cubre cada parte."|
-|Tareas|"Divide el plan en tareas de <30 min, ordenadas por dependencia, cada una con sus RF y una línea 'Hecho cuando:' verificable. Con checkboxes."|
-|Implementación|"Implementa SOLO la tarea Tn. Tests primero. Ejecuta la suite y muéstrame el resultado. Marca Tn como hecha y PÁRATE."|
-|Validación|"Recorre la spec RF (Requisito Funcional) por RF: qué test cubre cada uno y su resultado. Veredicto final: ¿spec cumplida?"|
-|Cambio|"Nuevo requisito: <X>. NO toques código: actualiza primero la spec y muéstrame el diff."|
+|Constitution|"Propose the constitution of this project: N short, verifiable principles about stack, quality, tests and limits. Max. 15 lines. Wait for my approval."|
+|Spec (interview)|"Do NOT write code. Ask me questions one at a time (max. 6) about edge cases, errors and scope, and then generate spec.md with numbered RFs in EARS, out of scope and completion criteria. Only the WHAT and the WHY."|
+|Clarification|"Review the spec as a professional QA: ambiguities, contradictions, missing edge cases, conflicts with the constitution. Only detect, do not resolve."|
+|Plan|"Read the constitution and spec. No code: generate plan.md with modules, data model, justified decisions (with the discarded alternative) and test strategy. State which RF each part covers."|
+|Tasks|"Split the plan into tasks of <30 min, ordered by dependency, each one with its RFs and a verifiable 'Done when:' line. With checkboxes."|
+|Implementation|"Implement ONLY task Tn. Tests first. Run the suite and show me the result. Mark Tn as done and STOP."|
+|Validation|"Walk through the spec RF (Functional Requirement) by RF: which test covers each one and its result. Final verdict: is the spec fulfilled?"|
+|Change|"New requirement: <X>. Do NOT touch code: update the spec first and show me the diff."|

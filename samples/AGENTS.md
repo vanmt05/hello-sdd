@@ -1,19 +1,19 @@
-# AGENTS.md — <proyecto>
+# AGENTS.md — <project>
 
-## Proyecto
-<Qué es, en 2-3 frases. Arquitectura, tecnologías..>
+## Project
+<What it is, in 2-3 sentences. Architecture, technologies...>
 
-## Comandos
-- Ejecutar: `<comando>`
-- Tests: `<comando>`
-- Lint/formato: `<comando>`
+## Commands
+- Run: `<command>`
+- Tests: `<command>`
+- Lint/format: `<command>`
 
-## Estilo y convenciones
-<Versión del lenguaje, convenciones de nombres, idioma del código y mensajes.>
+## Style and conventions
+<Language version, naming conventions, language of the code and messages.>
 
-## Reglas
-- Lee docs/constitution.md y la spec activa antes de tocar código.
-- <Límites: qué no tocar, qué no añadir sin preguntar.>
+## Rules
+- Read docs/constitution.md and the active spec before touching code.
+- <Limits: what not to touch, what not to add without asking.>
 
-## Al terminar cualquier tarea
-- <Verificación obligatoria, p. ej. ejecutar los tests.>
+## When finishing any task
+- <Mandatory verification, e.g. run the tests.>

@@ -1,20 +1,20 @@
-# Proyecto: `habits-cli`
+# Project: `habits-cli`
 
-Una app de terminal en Python para registrar hábitos de estudio y ver tu racha de días consecutivos.
+A Python terminal app to track study habits and see your streak of consecutive days.
 
-## Comandos
+## Commands
 ```
-habits add "estudiar python"     → crea un hábito
-habits done "estudiar python"    → marca el hábito como hecho HOY
-habits list                      → lista hábitos con su racha actual
+habits add "study python"     → creates a habit
+habits done "study python"    → marks the habit as done TODAY
+habits list                   → lists habits with their current streak
 ```
 
-## Estructura del proyecto
+## Project structure
 
 ```
 habits-cli/
 ├── AGENTS.md
-├── CLAUDE.md                      # una línea: @AGENTS.md
+├── CLAUDE.md                      # one line: @AGENTS.md
 ├── docs/
 │   └── constitution.md
 ├── specs/
@@ -29,133 +29,134 @@ habits-cli/
 │   ├── core.py
 │   └── storage.py
 └── tests/
-└── tests/
     ├── test_cli.py
     ├── test_core.py
     └── test_storage.py
 ```
 
-## Uso
+## Usage
 
 ```bash
-python -m habits add "Estudiar Python"   # crea el hábito
-python -m habits done "Estudiar Python"  # lo marca como hecho HOY (idempotente)
-python -m habits list                    # lista por racha descendente
+python -m habits add "Study Python"   # creates the habit
+python -m habits done "Study Python"  # marks it as done TODAY (idempotent)
+python -m habits list                 # lists by streak descending
 ```
 
-Los datos se guardan en un único JSON legible dentro del propio proyecto:
-`habits.json`, en la raíz del repositorio (ignorado por git).
-Salidas: `0` si todo va bien, `1` ante cualquier error (nombre vacío, duplicado,
-hábito inexistente o archivo corrupto). Un archivo corrupto nunca se sobrescribe.
+Data is stored in a single readable JSON file inside the project itself:
+`habits.json`, at the root of the repository (ignored by git).
+Exit codes: `0` if everything went well, `1` on any error (empty name, duplicate,
+missing habit or corrupt file). A corrupt file is never overwritten.
 
-## Desarrollo
+## Development
 
 ```bash
 python -m venv .venv && .venv/bin/pip install pytest
 .venv/bin/python -m pytest -q
 ```
 
-## Prompts SDD
+## SDD prompts
 
-### 1. Setup, constitución y AGENTS.md
+### 1. Setup, constitution and AGENTS.md
 
-**Constitución:**
+**Constitution:**
 
 ```text
-Vamos a crear la constitución de un proyecto nuevo: una CLI en Python para
-registrar hábitos de estudio y calcular rachas. Es un proyecto educativo que
-debe poder mantener un desarrollador junior.
+We are going to create the constitution of a new project: a Python CLI to
+track study habits and compute streaks. It is an educational project that
+must be maintainable by a junior developer.
 
-Proponme un docs/constitution.md con 6 principios innegociables, cortos y
-verificables, que cubran: simplicidad del stack, relación entre spec y código,
-separación entre lógica e interfaz, política de tests, persistencia de datos
-e idioma del código y los mensajes. Máximo 15 líneas. Espera mi aprobación.
+Propose a docs/constitution.md with 6 non-negotiable principles, short and
+verifiable, covering: simplicity of the stack, relationship between spec and
+code, separation of logic and interface, test policy, data persistence, and
+the language of the code and the messages. Maximum 15 lines. Wait for my
+approval.
 ```
 
-*Genera el [/docs/constitution.md](./docs/constitution.md)*
+*Generates [/docs/constitution.md](./docs/constitution.md)*
 
-*Escribimos el [AGENTS.md](./AGENTS.md) y el [CLAUDE.md](./CLAUDE.md)*
+*We write the [AGENTS.md](./AGENTS.md) and the [CLAUDE.md](./CLAUDE.md)*
 
-**Especificación:**
+**Specification:**
 
 ```text
-NO escribas código en ningún momento. Vamos a redactar la especificación de la
-primera funcionalidad de habits-cli. Lee docs/constitution.md.
+Do NOT write code at any point. We are going to write the specification of the
+first feature of habits-cli. Read docs/constitution.md.
 
-Idea inicial: una CLI con tres comandos: crear un hábito, marcarlo como hecho
-hoy, y listar los hábitos con su racha de días consecutivos.
+Initial idea: a CLI with three commands: create a habit, mark it as done
+today, and list the habits with their streak of consecutive days.
 
-Tu trabajo:
-1. Hazme preguntas de UNA en UNA para eliminar ambigüedades (casos límite,
-   comportamiento con errores, qué queda fuera del MVP). Máximo 6 preguntas.
-2. Con mis respuestas, genera specs/001-habits-mvp/spec.md con esta estructura:
-   contexto y objetivo, usuarios, historias de usuario, requisitos funcionales
-   numerados (RF-x) con criterios de aceptación en notación EARS en español,
-   requisitos no funcionales, casos límite, fuera de alcance, criterios de
-   finalización y dudas abiertas marcadas como [NECESITA ACLARACIÓN].
-3. El QUÉ y el POR QUÉ. Nada de stack, arquitectura ni nombres de archivos:
-   eso irá en el plan.
+Your job:
+1. Ask me questions ONE at a time to remove ambiguities (edge cases, behavior
+   on errors, what is out of scope for the MVP). Maximum 6 questions.
+2. With my answers, generate specs/001-habits-mvp/spec.md with this structure:
+   context and goal, users, user stories, numbered functional requirements
+   (RF-x) with acceptance criteria in EARS notation, non-functional
+   requirements, edge cases, out of scope, completion criteria and open
+   questions marked as [NEEDS CLARIFICATION].
+3. The WHAT and the WHY. No stack, architecture or file names: that goes in
+   the plan.
 ```
 
-*Genera el [specs/001-habits-mvp/spec.md](./specs/001-habits-mvp/spec.md)*
+*Generates [specs/001-habits-mvp/spec.md](./specs/001-habits-mvp/spec.md)*
 
-**Clarificación:**
+**Clarification:**
 
 ```text
-Revisa specs/001-habits-mvp/spec.md como si fueras un QA muy profesional.
-Lista: (1) ambigüedades restantes, (2) contradicciones entre requisitos,
-(3) casos límite no cubiertos, (4) conflictos con docs/constitution.md.
-No propongas soluciones todavía: solo detecta. Formato: lista numerada.
+Review specs/001-habits-mvp/spec.md as if you were a very professional QA.
+List: (1) remaining ambiguities, (2) contradictions between requirements,
+(3) edge cases not covered, (4) conflicts with docs/constitution.md.
+Do not propose solutions yet: only detect. Format: numbered list.
 ```
 
-**Planificación:**
+**Planning:**
 
 ```text
-Lee docs/constitution.md y specs/001-habits-mvp/spec.md. NO escribas código.
-Genera specs/001-habits-mvp/plan.md con: estructura de módulos, modelo de
-datos JSON con un ejemplo, algoritmo de cálculo de racha en pseudocódigo,
-contrato de la CLI (comandos, salidas, códigos de salida), decisiones técnicas
-justificadas (y su alternativa descartada), y estrategia de tests. Todo debe
-respetar la constitución y cubrir todos los RF. Marca qué RF cubre cada parte.
+Read docs/constitution.md and specs/001-habits-mvp/spec.md. Do NOT write code.
+Generate specs/001-habits-mvp/plan.md with: module structure, JSON data model
+with an example, streak computation algorithm in pseudocode, CLI contract
+(commands, outputs, exit codes), justified technical decisions (and their
+discarded alternative), and test strategy. Everything must respect the
+constitution and cover every RF. State which RF each part covers.
 ```
 
-*Genera el [specs/001-habits-mvp/plan.md](./specs/001-habits-mvp/plan.md)*
+*Generates [specs/001-habits-mvp/plan.md](./specs/001-habits-mvp/plan.md)*
 
-**Tareas:**
+**Tasks:**
 
 ```text
-A partir de spec.md y plan.md, genera specs/001-habits-mvp/tasks.md:
-tareas pequeñas (máx. 20-30 min cada una), en orden de dependencia, cada una
-con los RF que cubre y una línea "Hecho cuando:" verificable. Usa checkboxes.
+From spec.md and plan.md, generate specs/001-habits-mvp/tasks.md:
+small tasks (max. 20-30 min each), in dependency order, each one with the RFs
+it covers and a verifiable "Done when:" line. Use checkboxes.
 ```
 
-*Genera el [specs/001-habits-mvp/tasks.md](./specs/001-habits-mvp/tasks.md)*
+*Generates [specs/001-habits-mvp/tasks.md](./specs/001-habits-mvp/tasks.md)*
 
-**Implementación:**
+**Implementation:**
 
 ```text
-Implementa SOLO la tarea T2 de specs/001-habits-mvp/tasks.md, siguiendo
-plan.md y la constitución. Escribe primero los tests, luego el código.
-Ejecuta pytest -q y muéstrame el resultado. Al terminar: marca T2 en tasks.md,
-indica qué RF cubre y PÁRATE. No empieces T3.
+Implement ONLY task T2 of specs/001-habits-mvp/tasks.md, following plan.md
+and the constitution. Write the tests first, then the code.
+Run pytest -q and show me the result. When finished: mark T2 in tasks.md,
+state which RF it covers and STOP. Do not start T3.
 ```
 
-*Genera la implementación del código dentro de /habits*
+*Generates the code implementation inside /habits*
 
-**Validación**
+**Validation**
 
 ```text
-Recorre specs/001-habits-mvp/spec.md requisito por requisito (RF-1 a RF-11).
-Para cada uno indica: qué test lo cubre, y el resultado de ejecutarlo.
-Si algún RF no está cubierto o falla, dilo claramente. Después comprueba los
-criterios de finalización y dame un veredicto: ¿la spec está cumplida?
+Walk through specs/001-habits-mvp/spec.md requirement by requirement (RF-1 to
+RF-11). For each one state: which test covers it, and the result of running it.
+If any RF is not covered or fails, say so clearly. Then check the completion
+criteria and give me a verdict: is the spec fulfilled?
 ```
 
-**Próximos pasos**
+**Next steps**
 
 ```text
-Nuevo requisito para habits-cli: marcar como hecho el día de ayer con
-`habits done <nombre> --ayer`. NO toques código. Primero: actualiza
-specs/001-habits-mvp/spec.md (nuevo RF con EARS + casos límite: ¿y si ayer
-ya estaba marcado? ¿afecta a la racha?) y muéstrame el diff de la spec.
+New requirement for habits-cli: mark yesterday as done with
+`habits done <name> --ayer`. Do NOT touch code. First: update
+specs/001-habits-mvp/spec.md (new RF with EARS + edge cases: what if
+yesterday was already marked? does it affect the streak?) and show me the
+diff of the spec.
 ```

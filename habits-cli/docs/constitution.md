@@ -1,16 +1,17 @@
-# Constitución — habits-cli
+# Constitution — habits-cli
 
-Principios innegociables. Toda spec, plan y tarea debe cumplirlos.
+Non-negotiable principles. Every spec, plan and task must comply with them.
 
-1. **Simplicidad primero**: Python 3.12+ y solo biblioteca estándar en la
-   aplicación. Única dependencia de desarrollo permitida: pytest.
-2. **La spec manda**: ningún comportamiento se implementa si no está en la
-   spec activa. Si falta una decisión, se detiene el trabajo y se pregunta.
-3. **Lógica separada de interfaz**: el núcleo (core) no imprime ni lee de
-   consola. La CLI es una capa fina. Todo el core es testeable sin la CLI.
-4. **Tests como puerta**: cada tarea termina con sus tests en verde.
-   Prohibido avanzar con tests en rojo.
-5. **Datos locales y transparentes**: persistencia en un único archivo JSON
-   legible. Nada de bases de datos ni de red.
-6. **Idioma**: código e identificadores en inglés; mensajes al usuario y
-   documentación en español.
+1. **Simplicity first**: Python 3.12+ and standard library only in the
+   application. The only development dependency allowed: pytest.
+2. **The spec rules**: no behavior is implemented if it is not in the active
+   spec. If a decision is missing, work stops and the question is asked.
+3. **Logic separated from interface**: the core does not print or read from
+   the console. The CLI is a thin layer. The whole core is testable without
+   the CLI.
+4. **Tests as a gate**: every task ends with its tests passing. Moving
+   forward with failing tests is forbidden.
+5. **Local and transparent data**: persistence in a single readable JSON
+   file. No databases, no network.
+6. **Language**: code and identifiers in English; user-facing messages in
+   Spanish and documentation in English.
